@@ -1,18 +1,15 @@
 package greeter;
 
 public class Greeter {
+
+    GreeterStringFactory factory = new GreeterStringFactory();
     String formality;
 
+    public Greeter() {}
+
     public String greet() {
-        if (this.formality == "formal") {
-            return "Good evening, sir.";
-        } else if (this.formality == "casual") {
-            return "Sup bro?";
-        } else if (this.formality == "intimate") {
-            return "Hello Darling!";
-        } else {
-            return "Hello.";
-        }
+        if (formality == null) { formality = ""; }
+        return factory.getGreeterString(formality).getString();
     }
 
     public void setFormality(String formality) {
